@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tableau Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F4EE;
+    --espresso: #1C1410;
+    --mocha: #3D2B1F;
+    --latte: #A07856;
+    --foam: #EDE8DF;
+    --accent: #C8522A;
+    --accent-light: #F2DDD5;
+    --steel: #6B7280;
+    --card-bg: #FFFFFF;
+    --border: rgba(60,40,20,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--espresso);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(247,244,238,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    color: var(--espresso);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--steel);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    gap: 4rem;
+  }
+  .hero-text { max-width: 560px; }
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    color: var(--espresso);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--steel);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    max-width: 440px;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2rem;
+    background: var(--espresso);
+    color: var(--cream);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .hero-cta:hover { background: var(--accent); transform: translateY(-1px); }
+  .hero-cta svg { width: 14px; height: 14px; }
+
+  .hero-visual {
+    position: relative;
+    height: 520px;
+  }
+  .hero-card {
+    position: absolute;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(28,20,16,0.06);
+  }
+  .hero-card.main {
+    width: 380px;
+    height: 280px;
+    top: 60px;
+    left: 0;
+    z-index: 3;
+  }
+  .hero-card.secondary {
+    width: 300px;
+    height: 220px;
+    bottom: 40px;
+    right: 0;
+    z-index: 2;
+  }
+  .hero-card.tertiary {
+    width: 240px;
+    height: 160px;
+    top: 20px;
+    right: 40px;
+    z-index: 1;
+    opacity: 0.7;
+  }
+  .card-topbar {
+    height: 36px;
+    background: var(--foam);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 6px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; }
+  .dot.y { background: #ffbd2e; }
+  .dot.g { background: #28c840; }
+  .card-body { padding: 1rem; height: calc(100% - 36px); display: flex; align-items: center; justify-content: center; }
+
+  /* mini bar chart SVG */
+  .bar-mini { display: block; }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 7rem 4rem; }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.15;
+    color: var(--espresso);
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    color: var(--steel);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 4rem;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-section { background: var(--foam); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(28,20,16,0.1);
+  }
+  .project-card.featured {
+    grid-column: span 1;
+  }
+  .project-viz {
+    background: var(--foam);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+  .tableau-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 75%;
+  }
+  .tableau-wrap .tableauPlaceholder {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .tableau-wrap .tableauPlaceholder object {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .project-info { padding: 1.5rem; }
+  .project-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    margin-bottom: 0.75rem;
+  }
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--espresso);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .project-desc {
+    font-size: 0.875rem;
+    color: var(--steel);
+    line-height: 1.65;
+    margin-bottom: 1.2rem;
+  }
+  .project-meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--steel);
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+  }
+  .project-meta span { display: flex; align-items: center; gap: 4px; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--foam);
+    color: var(--mocha);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-size: 0.68rem;
+    font-weight: 500;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 0;
+  }
+  .skill-card {
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .skill-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-light);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .skill-icon svg { width: 20px; height: 20px; }
+  .skill-name {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--espresso);
+    margin-bottom: 0.3rem;
+  }
+  .skill-desc { font-size: 0.8rem; color: var(--steel); line-height: 1.55; }
+
+  /* ── INSIGHTS STRIP ── */
+  .insights-strip {
+    background: var(--espresso);
+    color: var(--cream);
+    padding: 5rem 4rem;
+  }
+  .insights-strip .section-label { color: var(--latte); }
+  .insights-strip .section-label::before { background: var(--latte); }
+  .insights-strip .section-title { color: var(--cream); }
+  .insights-strip .section-sub { color: rgba(247,244,238,0.6); }
+  .insights-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .insight-item { border-left: 2px solid var(--latte); padding-left: 1.5rem; }
+  .insight-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.8rem;
+    color: var(--latte);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .insight-label { font-size: 0.85rem; color: rgba(247,244,238,0.7); line-height: 1.5; }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--espresso);
+    font-size: 0.9rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); background: var(--accent-light); }
+  .contact-link svg { width: 18px; height: 18px; color: var(--latte); flex-shrink: 0; }
+  .contact-link-label { flex: 1; font-weight: 500; }
+  .contact-link-sub { font-size: 0.78rem; color: var(--steel); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--steel);
+  }
+
+  /* ── VIZ ILLUSTRATIONS ── */
+  .viz-container { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-text { animation: fadeUp 0.7s ease both; }
+  .hero-visual { animation: fadeUp 0.7s 0.2s ease both; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 2rem 3rem; }
+    .hero-visual { height: 300px; }
+    section { padding: 4rem 2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .insights-row { grid-template-columns: 1fr; }
+    .contact-section { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Data & Viz</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li>
+      <a href="https://github.com/YOUR-USERNAME" target="_blank" style="color:var(--accent);font-weight:500;">GitHub ↗</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding-top:9rem;">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Tableau · Analytics · Storytelling</div>
+    <h1>Turning raw data into <em>visual stories</em></h1>
+    <p class="hero-desc">
+      A collection of data analysis and visualization projects built in Tableau — from coffee quality research to multi-variable homework explorations, each dashboard built to surface insight, not just charts.
+    </p>
+    <a href="#projects" class="hero-cta">
+      View Projects
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+  </div>
+
+  <div class="hero-visual">
+    <!-- floating card 1 - bar chart preview -->
+    <div class="hero-card main">
+      <div class="card-topbar">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <span style="margin-left:8px;font-size:11px;color:var(--steel);">The Perfect Brew · Dashboard</span>
+      </div>
+      <div class="card-body">
+        <svg viewBox="0 0 320 200" width="320" height="200" xmlns="http://www.w3.org/2000/svg">
+          <!-- y axis -->
+          <line x1="44" y1="16" x2="44" y2="160" stroke="#D5CEBD" stroke-width="1"/>
+          <!-- gridlines -->
+          <line x1="44" y1="40" x2="310" y2="40" stroke="#EDE8DF" stroke-width="1"/>
+          <line x1="44" y1="80" x2="310" y2="80" stroke="#EDE8DF" stroke-width="1"/>
+          <line x1="44" y1="120" x2="310" y2="120" stroke="#EDE8DF" stroke-width="1"/>
+          <!-- bars - coffee varieties -->
+          <rect x="60" y="50" width="32" height="110" rx="2" fill="#C8522A" opacity="0.9"/>
+          <rect x="102" y="72" width="32" height="88" rx="2" fill="#C8522A" opacity="0.65"/>
+          <rect x="144" y="38" width="32" height="122" rx="2" fill="#A07856" opacity="0.9"/>
+          <rect x="186" y="88" width="32" height="72" rx="2" fill="#A07856" opacity="0.65"/>
+          <rect x="228" y="60" width="32" height="100" rx="2" fill="#3D2B1F" opacity="0.7"/>
+          <rect x="270" y="95" width="32" height="65" rx="2" fill="#3D2B1F" opacity="0.5"/>
+          <!-- labels -->
+          <text x="76" y="175" text-anchor="middle" fill="#6B7280" font-size="9" font-family="DM Sans,sans-serif">Ethiopia</text>
+          <text x="118" y="175" text-anchor="middle" fill="#6B7280" font-size="9" font-family="DM Sans,sans-serif">Colombia</text>
+          <text x="160" y="175" text-anchor="middle" fill="#6B7280" font-size="9" font-family="DM Sans,sans-serif">Kenya</text>
+          <text x="202" y="175" text-anchor="middle" fill="#6B7280" font-size="9" font-family="DM Sans,sans-serif">Brazil</text>
+          <text x="244" y="175" text-anchor="middle" fill="#6B7280" font-size="9" font-family="DM Sans,sans-serif">Vietnam</text>
+          <text x="286" y="175" text-anchor="middle" fill="#6B7280" font-size="9" font-family="DM Sans,sans-serif">India</text>
+          <!-- y labels -->
+          <text x="38" y="44" text-anchor="end" fill="#9CA3AF" font-size="8" font-family="DM Sans,sans-serif">100</text>
+          <text x="38" y="84" text-anchor="end" fill="#9CA3AF" font-size="8" font-family="DM Sans,sans-serif">75</text>
+          <text x="38" y="124" text-anchor="end" fill="#9CA3AF" font-size="8" font-family="DM Sans,sans-serif">50</text>
+          <!-- title -->
+          <text x="44" y="10" fill="#1C1410" font-size="10" font-weight="500" font-family="DM Sans,sans-serif">Avg Quality Score by Origin</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- floating card 2 - scatter preview -->
+    <div class="hero-card secondary">
+      <div class="card-topbar">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <span style="margin-left:8px;font-size:11px;color:var(--steel);">Altitude vs. Quality</span>
+      </div>
+      <div class="card-body">
+        <svg viewBox="0 0 240 155" width="240" height="155" xmlns="http://www.w3.org/2000/svg">
+          <line x1="30" y1="10" x2="30" y2="130" stroke="#D5CEBD" stroke-width="1"/>
+          <line x1="30" y1="130" x2="230" y2="130" stroke="#D5CEBD" stroke-width="1"/>
+          <!-- scatter dots -->
+          <circle cx="55" cy="115" r="4" fill="#C8522A" opacity="0.7"/>
+          <circle cx="80" cy="95" r="5" fill="#C8522A" opacity="0.8"/>
+          <circle cx="100" cy="80" r="4" fill="#A07856" opacity="0.75"/>
+          <circle cx="125" cy="68" r="6" fill="#C8522A" opacity="0.9"/>
+          <circle cx="148" cy="55" r="4" fill="#A07856" opacity="0.8"/>
+          <circle cx="165" cy="44" r="5" fill="#3D2B1F" opacity="0.7"/>
+          <circle cx="185" cy="35" r="4" fill="#C8522A" opacity="0.85"/>
+          <circle cx="205" cy="28" r="5" fill="#3D2B1F" opacity="0.75"/>
+          <!-- trend line -->
+          <line x1="45" y1="118" x2="215" y2="22" stroke="#C8522A" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+          <!-- axis labels -->
+          <text x="130" y="148" text-anchor="middle" fill="#9CA3AF" font-size="8" font-family="DM Sans,sans-serif">Altitude (m)</text>
+          <text x="10" y="70" text-anchor="middle" fill="#9CA3AF" font-size="8" font-family="DM Sans,sans-serif" transform="rotate(-90,10,70)">Score</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- floating card 3 - line preview -->
+    <div class="hero-card tertiary">
+      <div class="card-topbar">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <span style="margin-left:8px;font-size:11px;color:var(--steel);">Trend Analysis</span>
+      </div>
+      <div class="card-body">
+        <svg viewBox="0 0 190 100" width="190" height="100" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="10,80 40,60 70,50 100,30 130,20 160,15 180,18" fill="none" stroke="#C8522A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="10,85 40,78 70,70 100,65 130,58 160,55 180,50" fill="none" stroke="#A07856" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects-section">
+  <div class="section-label">Portfolio</div>
+  <h2 class="section-title">Selected projects</h2>
+  <p class="section-sub">Three distinct analytics projects spanning coffee quality research, multi-variable data exploration, and applied business analysis.</p>
+
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 - The Perfect Brew (featured) -->
+    <div class="project-card featured">
+      <div class="project-viz">
+        <div class="tableau-wrap">
+          <div class='tableauPlaceholder' id='viz1775159395332' style='position:absolute;top:0;left:0;width:100%;height:100%;'>
+            <noscript><a href='#'><img alt='The World Drinks Coffee. Only a Few Places Make It Great' src='https://public.tableau.com/static/images/Th/ThePerfectBrew/TheWorldDrinksCoffee_OnlyaFewPlacesMakeItGreat/1_rss.png' style='border:none'/></a></noscript>
+            <object class='tableauViz' style='width:100%;height:100%;'>
+              <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
+              <param name='embed_code_version' value='3'/>
+              <param name='site_root' value=''/>
+              <param name='name' value='ThePerfectBrew/TheWorldDrinksCoffee_OnlyaFewPlacesMakeItGreat'/>
+              <param name='tabs' value='no'/>
+              <param name='toolbar' value='yes'/>
+              <param name='static_image' value='https://public.tableau.com/static/images/Th/ThePerfectBrew/TheWorldDrinksCoffee_OnlyaFewPlacesMakeItGreat/1.png'/>
+              <param name='animate_transition' value='yes'/>
+              <param name='display_static_image' value='yes'/>
+              <param name='display_spinner' value='yes'/>
+              <param name='display_overlay' value='yes'/>
+              <param name='display_count' value='yes'/>
+              <param name='language' value='en-US'/>
+              <param name='filter' value='publish=yes'/>
+            </object>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <span class="project-tag">Data Storytelling</span>
+        <h3 class="project-title">The Perfect Brew</h3>
+        <p class="project-desc">A deep-dive into global coffee quality — exploring how altitude, origin, and variety drive flavor scores. Six interactive sheets reveal that Africa dominates quality rankings while high-altitude farms consistently outperform lowland ones.</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem;">
+          <span class="badge">Bar Charts</span>
+          <span class="badge">Scatter Plots</span>
+          <span class="badge">Maps</span>
+          <span class="badge">Dashboard</span>
+          <span class="badge">Story</span>
+        </div>
+        <div class="project-meta">
+          <span>6 sheets</span>
+          <span>2 dashboards</span>
+          <span>Coffee Quality Dataset</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 - Tableau HW 2 -->
+    <div class="project-card">
+      <div class="project-viz">
+        <div class="tableau-wrap">
+          <div class='tableauPlaceholder' id='viz1775159539930' style='position:absolute;top:0;left:0;width:100%;height:100%;'>
+            <noscript><a href='#'><img alt='The 48-Second Ghost' src='https://public.tableau.com/static/images/Ta/TableauHW2_17751595269650/Task1/1_rss.png' style='border:none'/></a></noscript>
+            <object class='tableauViz' style='width:100%;height:100%;'>
+              <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F'/>
+              <param name='embed_code_version' value='3'/>
+              <param name='site_root' value=''/>
+              <param name='name' value='TableauHW2_17751595269650/Task1'/>
+              <param name='tabs' value='no'/>
+              <param name='toolbar' value='yes'/>
+              <param name='static_image' value='https://public.tableau.com/static/images/Ta/TableauHW2_17751595269650/Task1/1.png'/>
+              <param name='animate_transition' value='yes'/>
+              <param name='display_static_image' value='yes'/>
+              <param name='display_spinner' value='yes'/>
+              <param name='display_overlay' value='yes'/>
+              <param name='display_count' value='yes'/>
+              <param name='language' value='en-US'/>
+              <param name='filter' value='publish=yes'/>
+            </object>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <span class="project-tag">Sports Analytics</span>
+        <h3 class="project-title">The 48-Second Ghost</h3>
+        <p class="project-desc">Thirty years of stagnation in the Women's 400m — while training and technology have surged forward, Olympic sprinters find themselves locked in a permanent battle against a 1996 benchmark that no modern athlete can seem to touch.</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem;">
+          <span class="badge">Bubble Charts</span>
+          <span class="badge">Scatter</span>
+          <span class="badge">Time Series</span>
+        </div>
+        <div class="project-meta">
+          <span>3 sheets</span>
+          <span>3 tasks</span>
+          <span>Olympic Data</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type='text/javascript'>
+    (function() {
+      var ids = ['viz1775159395332','viz1775159539930'];
+      ids.forEach(function(id) {
+        var divElement = document.getElementById(id);
+        if (!divElement) return;
+        var vizElement = divElement.getElementsByTagName('object')[0];
+        vizElement.style.width = '100%';
+        vizElement.style.height = '100%';
+      });
+      var scriptElement = document.createElement('script');
+      scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+      document.body.appendChild(scriptElement);
+    })();
+  </script>
+</section>
+
+<!-- INSIGHTS STRIP -->
+<div class="insights-strip">
+  <div class="section-label">By the numbers</div>
+  <h2 class="section-title" style="color:var(--cream);">What's in the work</h2>
+  <div class="insights-row">
+    <div class="insight-item">
+      <div class="insight-num">18</div>
+      <div class="insight-label">Individual worksheets across all three Tableau workbooks</div>
+    </div>
+    <div class="insight-item">
+      <div class="insight-num">6+</div>
+      <div class="insight-label">Chart types used — from scatter plots and bubble charts to maps and pie charts</div>
+    </div>
+    <div class="insight-item">
+      <div class="insight-num">3</div>
+      <div class="insight-label">Distinct domain areas — coffee research, structured problems, and task-based analysis</div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Toolkit</div>
+  <h2 class="section-title">Skills & tools</h2>
+  <p class="section-sub">The technical foundation behind each visualization.</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C8522A" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <div class="skill-name">Tableau Desktop</div>
+      <div class="skill-desc">Workbooks, dashboards, and data stories using .twb and .twbx formats</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C8522A" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="skill-name">Data Analysis</div>
+      <div class="skill-desc">Trend identification, outlier detection, and cross-dimensional comparisons</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C8522A" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div class="skill-name">Geospatial Viz</div>
+      <div class="skill-desc">Map-based visualizations showing geographic patterns and regional data</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C8522A" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="skill-name">Data Storytelling</div>
+      <div class="skill-desc">Narrative-driven dashboards and Tableau Stories that communicate insight</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--foam);">
+  <div class="contact-section">
+    <div>
+      <div class="section-label">Get in touch</div>
+      <h2 class="section-title">Let's connect</h2>
+      <p class="section-sub">Interested in my work or want to collaborate? Find me on Tableau Public or GitHub.</p>
+    </div>
+    <div>
+      <div class="contact-links">
+        <a href="https://public.tableau.com/YOUR-USERNAME" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <div>
+            <div class="contact-link-label">Tableau Public</div>
+            <div class="contact-link-sub">View all published visualizations</div>
+          </div>
+          <span style="color:var(--steel);font-size:0.8rem;">↗</span>
+        </a>
+        <a href="https://github.com/YOUR-USERNAME" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <div>
+            <div class="contact-link-label">GitHub</div>
+            <div class="contact-link-sub">This portfolio's source code</div>
+          </div>
+          <span style="color:var(--steel);font-size:0.8rem;">↗</span>
+        </a>
+        <a href="mailto:your@email.com" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-sub">your@email.com</div>
+          </div>
+          <span style="color:var(--steel);font-size:0.8rem;">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Built with HTML · Hosted on GitHub Pages</span>
+  <span style="font-family:'DM Serif Display',serif;font-size:1rem;color:var(--espresso);">Data & Viz Portfolio</span>
+  <span>Update links before publishing</span>
+</footer>
+
+</body>
+</html>
