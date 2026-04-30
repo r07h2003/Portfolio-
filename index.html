@@ -139,35 +139,29 @@
       background: rgba(255,255,255,0.1);
     }
 
-   /* ── HERO ── */
-.hero {
-  min-height: 60vh;
-  padding: 100px 56px 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  border-bottom: 1px solid var(--border);
-}
-
-.hero-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--muted);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  opacity: 0;
-  animation: fadeUp 0.6s 0.1s forwards;
-}
-
-.hero-bio {
-  max-width: 560px;
-  font-size: 20px;
-  color: var(--muted);
-  line-height: 1.9;
-  font-weight: 400;
-}
+ <!-- HERO -->
+<section class="hero" style="min-height: 60vh; padding-top: 80px; justify-content: center;">
+  <div class="hero-eyebrow" style="font-size: 12px;">MS Marketing Analytics · Rutgers Business School · Open to Summer 2026</div>
+  <h1 class="hero-name">
+    I'm<br>
+    <em>Rohan</em>
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-bio" style="font-size: 20px; line-height: 1.9; max-width: 560px;">
+      Aspiring <span class="hl">Product Manager</span> — looking to make an impact where <span class="hl">data meets technology</span>. I turn ambiguous problems into strategic decisions, and ideas into products that drive <span class="hl">measurable growth</span>.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Live Projects</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Live Dashboards</div>
+      </div>
+    </div>
+  </div>
+</section>
 
     /* ── SECTION HEADERS ── */
     .section-label {
