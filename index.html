@@ -897,150 +897,152 @@
     </div>
   </section>
   
-  <!-- ROSCO AI CAROUSAL SECTION -->
-  
-  <section id="Rosco AI" style="padding: 120px 56px; border-bottom: 1px solid var(--border); background: #fdf8f4;">
-    <div class="reveal">
-      <div class="section-label" style="color: #8B4513;">05 — Shipped · Running Locally</div>
-      <h2 class="section-heading" style="color: #8B4513;">Rosco<em style="color: #1a1a2e;">AI.</em></h2>
-    </div>
-
-    <div class="reveal" style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
-
-      <!-- Left: info -->
-      <div>
-        <div style="font-family: var(--font-mono); font-size: 10px; color: #8B4513; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px;">iMessage AI Agent · Powered by Claude SDK</div>
-        <p style="font-size: 17px; color: var(--muted); line-height: 1.8; margin-bottom: 28px;">
-          Rosco is a <strong style="color: var(--ink);">personal AI chief of staff </strong> that lives in my iMessage — built end-to-end using Claude as a vibe coding partner. It manages my emails, tracks internship opportunities, monitors my calendar, and sends daily briefings, all through a simple text conversation. Built on the <strong style="color: var(--ink);">Claude Agent SDK with persistent memory</strong> that learns my preferences over time.
-        </p>
-
-        <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px;">
-          <div style="display: flex; flex-direction: column; gap: 6px;">
-            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;">Role</div>
-            <div style="font-size: 13px; color: var(--ink2); padding-left: 12px; border-left: 2px solid #e2e2e2;">Founder — product spec, UX design, AI-assisted development</div>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 6px;">
-            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;">Status</div>
-            <div style="font-size: 13px; color: var(--ink2); padding-left: 12px; border-left: 2px solid #e2e2e2;">In development · App Store launch planned</div>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 6px;">
-            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;">Built With</div>
-            <div style="font-size: 13px; color: var(--ink2); padding-left: 12px; border-left: 2px solid #e2e2e2;">Claude AI · Vibe coding · iOS · AI health scoring</div>
-          </div>
-        </div>
-
-        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="https://github.com/r07h2003/floof" target="_blank" class="btn btn-primary" style="background: #8B4513;">View Build Log →</a>
-        </div>
-      </div>
-
-      <!-- Right: phone carousel -->
-<div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-  <div style="position: relative; width: 260px;">
-    <!-- Phone frame -->
-    <div style="background: #1a1a2e; border-radius: 32px; padding: 5px; box-shadow: 0 32px 64px rgba(108,92,231,0.25), 0 0 0 1px rgba(255,255,255,0.1);">
-      <div style="background: #000; border-radius: 28px; overflow: hidden; aspect-ratio: 9/19.5; position: relative;">
-        <div id="roscoCarousel" style="position: relative; width: 100%; height: 100%;">
-          
-          <div class="rosco-slide active">
-            <img src="https://raw.githubusercontent.com/r07h2003/Rosco-AI/main/WhatsApp%20Image%202026-04-29%20at%2013.45.48.jpeg" alt="Rosco email summary" style="width:100%; height:100%; object-fit:cover;"/>
-          </div>
-          <div class="rosco-slide">
-            <img src="https://raw.githubusercontent.com/r07h2003/Rosco-AI/main/WhatsApp%20Image%202026-04-29%20at%2013.45.48.jpeg" alt="Rosco daily briefing" style="width:100%; height:100%; object-fit:cover;"/>
-          </div>
-          <div class="rosco-slide">
-            <img src="https://raw.githubusercontent.com/r07h2003/Rosco-AI/main/WhatsApp%20Image%202026-04-29%20at%2013.45.48.jpeg" alt="Rosco introduction" style="width:100%; height:100%; object-fit:cover;"/>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!-- Prev/Next -->
-    <button onclick="roscoPrev()" style="position: absolute; left: -20px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; background: white; border: 1px solid #e2e2e2; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">‹</button>
-    <button onclick="roscoNext()" style="position: absolute; right: -20px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; background: white; border: 1px solid #e2e2e2; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">›</button>
+  <!-- ROSCO AI CAROUSEL SECTION -->
+<section id="Rosco AI" style="padding: 120px 56px; border-bottom: 1px solid var(--border); background: #fdf8f4;">
+  <div class="reveal">
+    <div class="section-label" style="color: #8B4513;">05 — Shipped · Running Locally</div>
+    <h2 class="section-heading" style="color: #8B4513;">Rosco<em style="color: #1a1a2e;">AI.</em></h2>
   </div>
 
-  <!-- Dots -->
-  <div style="display: flex; gap: 6px; align-items: center;">
-    <div class="rosco-dot active" onclick="roscoGo(0)"></div>
-    <div class="rosco-dot" onclick="roscoGo(1)"></div>
-    <div class="rosco-dot" onclick="roscoGo(2)"></div>
-  </div>
-</div>
+  <div class="reveal" style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
 
+    <!-- Left: info -->
+    <div>
+      <div style="font-family: var(--font-mono); font-size: 10px; color: #8B4513; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px;">iMessage AI Agent · Powered by Claude SDK</div>
+      <p style="font-size: 17px; color: var(--muted); line-height: 1.8; margin-bottom: 28px;">
+        Rosco is a <strong style="color: var(--ink);">personal AI chief of staff</strong> that lives in my iMessage — built end-to-end using Claude as a vibe coding partner. It manages my emails, tracks internship opportunities, monitors my calendar, and sends daily briefings, all through a simple text conversation. Built on the <strong style="color: var(--ink);">Claude Agent SDK with persistent memory</strong> that learns my preferences over time.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px;">
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;">Role</div>
+          <div style="font-size: 13px; color: var(--ink2); padding-left: 12px; border-left: 2px solid #e2e2e2;">Founder — product spec, UX design, AI-assisted development</div>
         </div>
-
-        <!-- Caption -->
-        <div style="height: 20px; position: relative; width: 260px; text-align: center;">
-          <div class="floof-caption active">Splash Screen — Calm, gentle care tracking</div>
-<div class="floof-caption ">Onboarding — Pet species selection</div>
-<div class="floof-caption ">Personalized Plan — AI-generated care plan</div>
-<div class="floof-caption ">Home Dashboard — Daily tracking overview</div>
-<div class="floof-caption ">Routine View — Daily schedule tracking</div>
-<div class="floof-caption ">Wellness Insights — Health score & trends</div>
-
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;">Status</div>
+          <div style="font-size: 13px; color: var(--ink2); padding-left: 12px; border-left: 2px solid #e2e2e2;">In development · App Store launch planned</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;">Built With</div>
+          <div style="font-size: 13px; color: var(--ink2); padding-left: 12px; border-left: 2px solid #e2e2e2;">Claude AI · Vibe coding · iOS · Persistent Memory</div>
         </div>
       </div>
 
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="https://github.com/r07h2003/Rosco-AI" target="_blank" class="btn btn-primary" style="background: #8B4513;">View Build Log →</a>
+      </div>
     </div>
-  </section>
 
-  <style>
-    .floof-slide {
-      position: absolute; inset: 0;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    .floof-slide.active { opacity: 1; }
-    .floof-slide img { width: 100%; height: 100%; object-fit: cover; }
+    <!-- Right: phone carousel -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+      <div style="position: relative; width: 260px;">
+        
+        <!-- Phone frame -->
+        <div style="background: #1a1a2e; border-radius: 32px; padding: 5px; box-shadow: 0 32px 64px rgba(108,92,231,0.25), 0 0 0 1px rgba(255,255,255,0.1);">
+          <div style="background: #000; border-radius: 28px; overflow: hidden; aspect-ratio: 9/19.5; position: relative;">
+            
+            <div class="rosco-slide active">
+              <img src="https://raw.githubusercontent.com/r07h2003/Rosco-AI/main/WhatsApp%20Image%202026-04-29%20at%2013.45.48.jpeg" alt="Rosco email summary"/>
+            </div>
+            <div class="rosco-slide">
+              <img src="https://raw.githubusercontent.com/r07h2003/Rosco-AI/main/WhatsApp%20Image%202026-04-29%20at%2013.47.37.jpeg" alt="Rosco daily briefing"/>
+            </div>
+            <div class="rosco-slide">
+              <img src="https://raw.githubusercontent.com/r07h2003/Rosco-AI/main/WhatsApp%20Image%202026-04-29%20at%2023.44.16.jpeg" alt="Rosco internship search"/>
+            </div>
 
-    .floof-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: #d0c8f8;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .floof-dot.active {
-      background: #6c5ce7;
-      width: 20px;
-      border-radius: 4px;
-    }
+          </div>
+        </div>
 
-    .floof-caption {
-      position: absolute; inset: 0;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .floof-caption.active { opacity: 1; }
-  </style>
+        <!-- Prev/Next buttons -->
+        <button onclick="roscoPrev()" style="position:absolute; left:-20px; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%; background:white; border:1px solid #e2e2e2; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.1);">‹</button>
+        <button onclick="roscoNext()" style="position:absolute; right:-20px; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%; background:white; border:1px solid #e2e2e2; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.1);">›</button>
+      </div>
 
-  <script>
-    let floofIdx = 0;
-    const floofSlides = document.querySelectorAll('.floof-slide');
-    const floofDots = document.querySelectorAll('.floof-dot');
-    const floofCaptions = document.querySelectorAll('.floof-caption');
+      <!-- Dots -->
+      <div style="display:flex; gap:6px; align-items:center;">
+        <div class="rosco-dot active" onclick="roscoGo(0)"></div>
+        <div class="rosco-dot" onclick="roscoGo(1)"></div>
+        <div class="rosco-dot" onclick="roscoGo(2)"></div>
+        <div class="rosco-dot" onclick="roscoGo(3)"></div>
+      </div>
 
-    function floofGo(n) {
-      floofSlides[floofIdx].classList.remove('active');
-      floofDots[floofIdx].classList.remove('active');
-      floofCaptions[floofIdx].classList.remove('active');
-      floofIdx = (n + floofSlides.length) % floofSlides.length;
-      floofSlides[floofIdx].classList.add('active');
-      floofDots[floofIdx].classList.add('active');
-      floofCaptions[floofIdx].classList.add('active');
-    }
+      <!-- Captions -->
+      <div style="height:20px; position:relative; width:260px; text-align:center;">
+        <div class="rosco-caption active">Rosco checking your inbox</div>
+        <div class="rosco-caption">Daily internship briefing</div>
+        <div class="rosco-caption">Book recommendations by Rosco</div>
+        <div class="rosco-caption">Meet Rosco AI</div>
+      </div>
+    </div>
 
-    function floofNext() { floofGo(floofIdx + 1); }
-    function floofPrev() { floofGo(floofIdx - 1); }
+  </div>
+</section>
 
-    // Auto-advance every 3s
-    setInterval(() => floofNext(), 3000);
-  </script>
+<style>
+  .rosco-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .rosco-slide.active { opacity: 1; }
+  .rosco-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .rosco-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d0c8b0;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .rosco-dot.active {
+    background: #8B4513;
+    width: 20px;
+    border-radius: 4px;
+  }
+
+  .rosco-caption {
+    position: absolute;
+    inset: 0;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+  }
+  .rosco-caption.active { opacity: 1; }
+</style>
+
+<script>
+  let roscoIdx = 0;
+  const roscoSlides = document.querySelectorAll('.rosco-slide');
+  const roscoDots = document.querySelectorAll('.rosco-dot');
+  const roscoCaptions = document.querySelectorAll('.rosco-caption');
+
+  function roscoGo(n) {
+    roscoSlides[roscoIdx].classList.remove('active');
+    roscoDots[roscoIdx].classList.remove('active');
+    roscoCaptions[roscoIdx].classList.remove('active');
+    roscoIdx = (n + roscoSlides.length) % roscoSlides.length;
+    roscoSlides[roscoIdx].classList.add('active');
+    roscoDots[roscoIdx].classList.add('active');
+    roscoCaptions[roscoIdx].classList.add('active');
+  }
+
+  function roscoNext() { roscoGo(roscoIdx + 1); }
+  function roscoPrev() { roscoGo(roscoIdx - 1); }
+
+  setInterval(() => roscoNext(), 3000);
+</script>
 
   
   <!-- FLOOF CAROUSEL SECTION -->
