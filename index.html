@@ -259,7 +259,7 @@ nav {
   animation: fadeUp 0.7s 0.6s forwards;
 }
 
-    /* ── SECTION HEADERS ── */
+   /* ── SECTION HEADERS ── */
     .section-label {
       font-family: var(--font-mono);
       font-size: 11px;
@@ -268,7 +268,6 @@ nav {
       text-transform: uppercase;
       margin-bottom: 12px;
     }
-
     .section-heading {
       font-family: var(--font-display);
       font-size: clamp(48px, 7vw, 96px);
@@ -277,11 +276,13 @@ nav {
       letter-spacing: -0.02em;
       color: var(--ink);
     }
-
     .section-heading em {
       font-style: italic;
       color: var(--accent);
       display: block;
+    }
+    .section-heading em.blue {
+      color: #1e3a5f;
     }
 
     /* ── ABOUT ── */
@@ -1132,7 +1133,7 @@ nav {
   <!-- Left: sticky -->
   <div style="position: sticky; top: 120px;">
     <div class="section-label">02 — How I Work</div>
-    <h2 class="section-heading">my<em style="color: #1e3a5f;">approach.</em></h2>
+    <h2 class="section-heading">my<em class="blue">approach.</em></h2>
     <p style="font-size: 17px; color: var(--muted); line-height: 1.8; margin-top: 24px; max-width: 380px;">
       Working through real problems teaches you more than any classroom. Here's how I think and operate.
     </p>
